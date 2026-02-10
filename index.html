@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            background: #000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            border: 3px solid #00ff00;
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+            background: #001a00;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+        }
+        h1 {
+            color: #00ff00;
+            margin-bottom: 30px;
+        }
+        .buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        button {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border: 2px solid #00ff00;
+            background: #003300;
+            color: #00ff00;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #00ff00;
+            color: #000;
+        }
+        #no-btn {
+            border-color: #ff3333;
+            color: #ff3333;
+            background: #330000;
+        }
+        #no-btn:hover {
+            background: #ff3333;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WILL YOU BE MY VALENTINE?</h1>
+        <p>Choose wisely...</p>
+        
+        <div class="buttons">
+            <button id="yes-btn">YES</button>
+            <button id="no-btn">NO</button>
+        </div>
+        
+        <div id="result" style="display: none; margin-top: 30px;">
+            <h2>Thank you! ❤️</h2>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('yes-btn').addEventListener('click', function() {
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerHTML = '<h2>YAY! You said YES! ❤️</h2>';
+        });
+        
+        let noClicks = 0;
+        document.getElementById('no-btn').addEventListener('click', function() {
+            noClicks++;
+            if (noClicks < 3) {
+                this.style.position = 'fixed';
+                this.style.left = Math.random() * 80 + 'vw';
+                this.style.top = Math.random() * 80 + 'vh';
+            } else {
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('result').innerHTML = '<h2>Nice try! You meant YES 😉</h2>';
+            }
+        });
+    </script>
+</body>
+</html>
